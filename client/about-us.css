@@ -1,0 +1,303 @@
+:root {
+    --bg-light: #F4F7E6; /* Exact cream from image */
+    --text-dark: #0A2521; /* Deep forest green */
+    --accent-tan: #B68347; /* Button ochre */
+    --card-white: #FCFDF9;
+    --footer-dark: #051614;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #091c20;
+    color: white;
+}
+
+/* =========================
+   NAVBAR LAYOUT (RESTORED)
+========================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 60px;
+  position: fixed;
+  gap: 60px;
+  background-color: #091c20;
+  width: 90%;
+}
+
+.logo {
+  width: 120px;
+  height: 30px;
+  background: #cfc9c9;
+}
+
+.navbar nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #eef1dc;
+  letter-spacing: 0.2px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+.btn-outline {
+  border: 1px solid #cfcfcf;
+  background: #eef1dc;
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: #091c20;
+  text-decoration: none;
+}
+
+.btn-solid {
+  background: #091c20;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  text-decoration: none;
+}
+/* Hero Section - 100% laptop width */
+.hero {
+    display: flex;
+    padding: 60px 5% 100px;
+    align-items: center;
+    gap: 80px;
+}
+
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 2.8rem; margin-bottom: 25px; line-height: 1.1; }
+.hero-text p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 35px; max-width: 500px; }
+.btn-tan-large { background: var(--accent-tan); color: white; border: none; padding: 15px 40px; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+
+.hero-img { flex: 1; }
+.hero-img img { width: 100%; border-radius: 5px; object-fit: cover; }
+
+/* Bento Grid Logic for "Our Core Values" */
+.values-section { padding: 100px 5%; }
+.section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.v-card {
+    background: var(--card-white);
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid #E2E8D0;
+}
+
+.card-1 { grid-row: span 2; } /* Accountability is tall */
+.v-card h4 { font-size: 1.4rem; margin-bottom: 15px; }
+
+/* Stats */
+.stats-container { text-align: center; padding-bottom: 100px; }
+.stats-grid { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; padding: 0 5%; }
+.stat-card { background: white; width: 250px; padding: 40px 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.stat-card h3 { font-size: 2.5rem; margin-bottom: 5px; }
+
+/* Content Rows */
+.content-row { display: flex; align-items: center; padding: 80px 5%; gap: 100px; }
+.content-row.reverse { flex-direction: row-reverse; }
+.text-block { flex: 1; }
+.text-block h2 { font-size: 2.2rem; margin-bottom: 20px; }
+.img-block { flex: 1; }
+.img-block img { width: 100%; border-radius: 12px; height: 350px; object-fit: cover; }
+
+/* Team Section Precise Styling */
+.team-section {
+    padding: 80px 5%;
+    background-color: var(--bg-light); /* Matching the cream background */
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.section-subtext {
+    max-width: 900px;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 50px;
+    color: var(--text-dark);
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.team-card {
+    background: #FCFDF9;
+    border-radius: 8px;
+    border: 1.5px solid #E0E4D3; /* Subtle border from screenshot */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Light drop shadow */
+    overflow: hidden;
+    padding: 10px; /* Padding inside the card */
+}
+
+.team-img-wrapper {
+    width: 100%;
+    height: 300px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-info {
+    padding: 20px 10px;
+}
+
+.team-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.team-info p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    opacity: 0.9;
+}
+
+/* Scroll Button Accuracy */
+.scroll-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.scroll-btn {
+    background: #F1F3E2;
+    border: 1px solid #B68347;
+    color: var(--text-dark);
+    padding: 10px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* CTA Banner */
+.cta-banner { padding: 100px 5%; }
+.cta-outline { border: 1.5px solid var(--text-dark); border-radius: 15px; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
+.cta-content { max-width: 70%; }
+.cta-content h3 { font-size: 2rem; margin-bottom: 15px; }
+
+/* Footer */
+.footer {
+  background-color: #eef1dc;
+  color: #000;
+  padding: 50px 40px;
+  outline: solid;
+  outline-offset: 40px;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 30px;
+  opacity: 0.80;
+  font-weight: 600;
+  color: #999;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+.footer-links a {
+  color: #000;
+}
+
+.footer-divider {
+  height: 1px;
+  background: #eef1dc;
+  margin: 26px 0;
+}
+
+.footer-programs {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.9;
+  border-top: 2px solid blue;
+  border-bottom: 2px solid blue;
+  padding: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  display: grid;
+}
+
+.footer-info {
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-info :nth-child(4) {
+  margin-top: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.footer-policy {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+}
+
+.footer-policy a{
+  color: #000;
+}
+
+.footer a {
+  color: #000;
+}

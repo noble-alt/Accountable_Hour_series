@@ -1,0 +1,172 @@
+:root {
+    --deep-dark: #08171A;      /* Background shade from the frame */
+    --input-bg: #0D2024;       /* Inner input field shade */
+    --accent-gold: #B87E43;    /* The burnt-orange/gold button color */
+    --border-gold: #4C3C2E;    /* The subtle gold border on inputs */
+    --text-main: #FFFFFF;
+    --text-muted: #7E8D8F;
+    --toggle-inactive: #122529;
+    --toggle-active: #334349;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body.auth-bg {
+    background-color: var(--deep-dark);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+    padding: 20px;
+}
+
+.brand-logo {
+    width: 250px;
+    height: 60px;
+    background: #112327; /* Matching the placeholder box in image */
+    margin: 0 auto 50px;
+    border-radius: 4px;
+}
+
+.welcome-text {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+/* Toggle Switch Styling */
+.auth-toggle {
+    background: var(--toggle-inactive);
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 12px 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.toggle-btn.active {
+    background: var(--toggle-active);
+    color: var(--text-main);
+}
+
+.helper-text {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* Input Fields Precision */
+.input-container {
+    background: var(--input-bg);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.icon-section {
+    font-size: 1.3rem;
+    padding-right: 18px;
+    border-right: 1px solid #233538;
+}
+
+.field-section {
+    flex: 1;
+    padding-left: 18px;
+}
+
+.field-section label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.field-section input {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+}
+
+.status-section {
+    font-size: 1.2rem;
+    color: var(--text-main);
+}
+
+/* Button & Divider */
+.btn-continue {
+    background: var(--accent-gold);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.line {
+    flex: 1;
+    height: 1px;
+    background: #233538;
+}
+
+.divider-text {
+    padding: 0 15px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* Social Icons */
+.social-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-link img {
+    width: 28px;
+}
+
+.social-link.apple-logo {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}

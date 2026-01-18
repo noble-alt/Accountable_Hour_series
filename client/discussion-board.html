@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Board</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="discussion-board.css">
+</head>
+<body>
+    <script src="discussion-board.js"></script>
+    <header class="navbar">
+        <div class="logo"> <a href="index.html"></a></div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="mentor-page.html">Services</a>
+          <a href="event.html">Events</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="discussion-board.html">Discussion Board</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="sign-up.html#signin" class="btn-outline">Log In</a>
+          <a href="mentor-page.html" class="btn-solid">Meet Mentors</a>
+        </div>
+      </header>
+
+    <main class="container">
+        <h1>Discussion Board</h1>
+        <div class="post-container">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+        <div class="post-form">
+            <h2>Create a new post</h2>
+            <form id="new-post-form">
+                <input type="text" id="post-title" placeholder="Post title" required>
+                <textarea id="post-content" placeholder="Post content" required></textarea>
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
+    </main>
+<script src="script.js"></script></body>
+</html>

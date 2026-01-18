@@ -1,0 +1,123 @@
+:root {
+    --bg-dark: #071515;
+    --accent: #b68245;
+    --text-main: #ffffff;
+    --text-muted: #8e9a9a;
+    --nav-btn: #f4f7f0;
+    --footer-bg: #f4f6ef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+}
+
+/* Navbar */
+header { padding: 25px 5%; }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-box { width: 110px; height: 35px; background: #3d3d3d; border-radius: 2px; }
+.nav-links { display: flex; list-style: none; gap: 35px; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; transition: 0.3s; }
+.nav-links a.active { color: white; }
+.nav-cta { display: flex; align-items: center; gap: 25px; }
+.login-btn { 
+    background: var(--nav-btn); border: none; padding: 10px 28px; 
+    border-radius: 25px; font-weight: 600; cursor: pointer;
+}
+.mentors-link { font-weight: 600; font-size: 14px; cursor: pointer; }
+
+/* Hero Section & Masonry */
+.gallery-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 50px;
+    padding: 60px 5%;
+    align-items: start;
+}
+.hero-content h1 { font-size: 4.2rem; line-height: 1.1; margin-bottom: 25px; }
+.hero-content p { color: var(--text-muted); max-width: 440px; font-size: 0.95rem; line-height: 1.7; }
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 220px;
+    gap: 15px;
+}
+.grid-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.item-1 { grid-column: span 2; grid-row: span 2; }
+.item-2 { grid-row: span 2; }
+
+/* Controls */
+.page-controls { display: flex; justify-content: center; gap: 20px; margin: 60px 0 100px; }
+.btn-outline { background: transparent; border: 1px solid #1a2a2a; color: white; padding: 12px 45px; border-radius: 6px; cursor: pointer; }
+.btn-solid { background: var(--accent); border: none; color: white; padding: 12px 45px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+
+/* Special Moments */
+.special-moments { padding: 0 5% 100px; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 3.5rem; }
+.arrow-nav { display: flex; gap: 20px; font-size: 1.5rem; color: var(--text-muted); }
+
+.moments-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.moment-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.col-2-span { grid-column: span 2; }
+.col-1-tall { grid-row: span 2; }
+.season-label { 
+    grid-column: span 1; display: flex; align-items: flex-end; 
+    font-size: 1.8rem; padding-bottom: 10px;
+}
+
+/* Professional Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: #1a1a1a;
+    padding: 60px 5% 30px;
+}
+.footer-brands {
+    display: flex; justify-content: space-around; 
+    font-weight: 900; opacity: 0.3; font-size: 1.2rem; margin-bottom: 50px;
+}
+.footer-nav { text-align: center; margin-bottom: 40px; }
+.footer-nav a { text-decoration: none; color: #1a1a1a; margin: 0 15px; font-size: 14px; font-weight: 500; }
+
+.footer-links-grid {
+    display: flex; justify-content: center; gap: 40px;
+    border-bottom: 1px solid #e0e0e0; padding-bottom: 30px; margin-bottom: 30px;
+    font-size: 13px; font-weight: 500;
+}
+.footer-links-grid a { text-decoration: none; color: #1a1a1a; }
+
+.footer-info {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    font-size: 12px;
+    line-height: 2;
+}
+.socials { display: flex; gap: 20px; font-size: 1.4rem; margin-bottom: 20px; }
+.legal { display: flex; gap: 20px; margin-top: 10px; }
+.legal a { text-decoration: none; color: #1a1a1a; }
+
+/* Scroll Animation */
+.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }

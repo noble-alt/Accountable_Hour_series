@@ -1,0 +1,118 @@
+body {
+    background-color: #091c20;
+    color: #eef1dc;
+}
+
+.container {
+    max-width: 900px;
+    margin: 120px auto 40px;
+    padding: 20px;
+    background-color: #0a1f24;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+    color: #eef1dc;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-container {
+    margin-bottom: 40px;
+}
+
+.post {
+    background-color: #0e2a30;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #1a3a40;
+    border-radius: 8px;
+}
+
+.post h3 {
+    color: #b4793d;
+    margin-bottom: 10px;
+}
+
+.post p {
+    margin-bottom: 15px;
+}
+
+.post button {
+    background-color: #b4793d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.post button:hover {
+    background-color: #a0682a;
+}
+
+.comment-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #1a3a40;
+}
+
+.comment-section h4 {
+    color: #eef1dc;
+    margin-bottom: 10px;
+}
+
+.comments p {
+    background-color: #091c20;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.comment-form input {
+    width: calc(100% - 100px);
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #1a3a40;
+    background-color: #0e2a30;
+    color: #eef1dc;
+}
+
+.comment-form button {
+    width: 90px;
+    padding: 8px;
+}
+
+.post-form {
+    padding: 20px;
+    background-color: #0e2a30;
+    border-radius: 8px;
+}
+
+.post-form input,
+.post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #1a3a40;
+    background-color: #091c20;
+    color: #eef1dc;
+}
+
+.post-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #b4793d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.post-form button:hover {
+    background-color: #a0682a;
+}

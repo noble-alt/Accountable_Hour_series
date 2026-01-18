@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountable Hours Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo-box"></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#" class="active">Gallery</a></li>
+            </ul>
+            <div class="nav-cta">
+                <i class="fa-regular fa-sun theme-icon"></i>
+                <button class="login-btn">Log In</button>
+                <span class="mentors-link">Meet Mentors</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-hero fade-in">
+            <div class="hero-content">
+                <h1>Accountable Hours Gallery</h1>
+                <p>From joyous celebrations to quiet moments of reflection, this gallery captures the essence of every season. Each snapshot tells a story of growth, connection and unforgettable memories. Join us as we journey through the highlights that defined our year.</p>
+            </div>
+            
+            <div class="masonry-grid">
+                <div class="grid-item item-1"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800" alt="Large Meeting"></div>
+                <div class="grid-item item-2"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800" alt="Team Walk"></div>
+                <div class="grid-item item-3"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600" alt="Library"></div>
+                <div class="grid-item item-4"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600" alt="Friends"></div>
+                <div class="grid-item item-5"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800" alt="Audience"></div>
+            </div>
+        </section>
+
+        <div class="page-controls fade-in">
+            <button class="btn-outline">Previous Page</button>
+            <button class="btn-solid">Next Page</button>
+        </div>
+
+        <section class="special-moments fade-in">
+            <div class="section-header">
+                <h2>Special Moments</h2>
+                <div class="arrow-nav">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <div class="moments-container">
+                <div class="moment-box col-1"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600"></div>
+                <div class="moment-box col-2-span"><img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&w=1200"></div>
+                <div class="moment-box col-1-tall"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600"></div>
+                
+                <h3 class="season-label">Summer 2025</h3>
+
+                <div class="moment-box"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600"></div>
+                <div class="moment-box"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600"></div>
+                <div class="moment-box"><img src="https://images.unsplash.com/photo-1522152302542-71a8e5172aa1?auto=format&fit=crop&w=600"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brands">
+            <span>VAIO</span> <span>SHARP</span> <span>Microsoft</span> <span>SONY</span> <span>acer</span> <span>NOKIA</span> <span>ASUS</span> <span>CASIO</span>
+        </div>
+        
+        <div class="footer-nav">
+            <a href="#">Home</a> <a href="#">Events</a> <a href="#">Gallery</a> <a href="#">About us</a> <a href="#">Services</a> <a href="#">Contact Us</a>
+        </div>
+
+        <div class="footer-links-grid">
+            <a href="#">Mentorship Program</a>
+            <a href="#">Monthly Learning sessions</a>
+            <a href="#">Networking Summit</a>
+            <a href="#">Scholarship</a>
+            <a href="#">Community Forum</a>
+        </div>
+
+        <div class="footer-info">
+            <div class="info-left">
+                <p><strong>HQ:</strong> 45 Olufemi Street, Allen Avenue, Ikeja, Lagos, Nigeria</p>
+                <p>© 2025 Kenpact Solutions. All rights reserved.</p>
+            </div>
+            <div class="info-center">
+                <p><strong>Call us on:</strong> +234123456789</p>
+                <p><strong>Email:</strong> Accountablehourseries@gmail.com</p>
+            </div>
+            <div class="info-right">
+                <div class="socials">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="legal">
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy and Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

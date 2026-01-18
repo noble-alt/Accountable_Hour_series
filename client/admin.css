@@ -1,0 +1,71 @@
+body {
+    background-color: #091c20;
+    color: #eef1dc;
+}
+
+.container {
+    max-width: 800px;
+    margin: 120px auto 40px;
+    padding: 20px;
+    background-color: #0a1f24;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+    color: #eef1dc;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#admin-login-form input {
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #1a3a40;
+    background-color: #0e2a30;
+    color: #eef1dc;
+    font-size: 16px;
+}
+
+#admin-login-form button {
+    padding: 12px;
+    background-color: #b4793d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#admin-login-form button:hover {
+    background-color: #a0682a;
+}
+
+#admin-dashboard {
+    text-align: center;
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+
+#stats p {
+    font-size: 18px;
+}
+
+#stats span {
+    font-weight: bold;
+    color: #b4793d;
+}
