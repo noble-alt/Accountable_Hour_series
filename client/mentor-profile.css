@@ -17,7 +17,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-light);
   padding: 22px 60px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 90%;
   z-index: 1000;
   background-color: #091c20; /* Add a background color to prevent content from showing through */
 }
@@ -31,11 +31,12 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-light);
 .navbar nav a {
   font-size: 14px;
   font-weight: 500;
-  color: black;
+  color: #eef1dc;
   letter-spacing: 0.2px;
   position: relative;
   padding-bottom: 4px;
   transition: color 0.25s ease;
+  text-decoration: none;
 }
 
 .nav-actions {
@@ -47,7 +48,27 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-light);
     display: flex;
     align-items: center;
     gap: 100px;
-    color: black;
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid #cfcfcf;
+  background: #eef1dc;
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: #091c20 !important;
+  text-decoration: none;
+}
+
+.btn-solid {
+  display: inline-block;
+  background: #b4793d;
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 15px rgba(238, 241, 220, 0.4);
+  text-decoration: none;
 }
 
 /* Dark Header Section */
