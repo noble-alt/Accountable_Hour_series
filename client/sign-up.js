@@ -52,24 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI(mode);
     });
 
-    const getApiBase = () => {
-        if (window.location.protocol === 'file:') {
-            return 'http://localhost:3000';
-        }
-        const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        if (!window.location.port || window.location.port !== '3000') {
-            return `${protocol}//${hostname}:3000`;
-        }
-        return '';
-    };
-
-    const API_BASE = getApiBase();
-
-    // Check for file:// protocol
-    if (window.location.protocol === 'file:') {
-        showError('<strong>Warning:</strong> You are accessing this page via the <code>file://</code> protocol. Signup and Signin will NOT work. Please run the server and access via <code>http://localhost:3000</code>.');
-    }
+    const API_BASE = 'http://localhost:3000';
 
     // Server Connectivity Check
     const serverStatus = document.getElementById('server-status');
@@ -99,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             token = localStorage.getItem('token');
         } catch (e) {
             console.error('localStorage access denied:', e);
-            showError('Browser storage is restricted. Login state might not be saved.');
         }
         if (token) {
             showError('You are currently logged in. To use a different account, please log out.');
@@ -130,9 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const isSignUp = window.location.hash !== '#signin';
         const endpoint = API_BASE + (isSignUp ? '/signup' : '/login');
 
-        console.log(`Form submitted for ${isSignUp ? 'signup' : 'login'} at ${endpoint}`);
-
-        // More robust form data extraction
         const data = {};
         const inputs = form.querySelectorAll('input');
         inputs.forEach(input => {
@@ -141,9 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (!isSignUp) {
-            delete data.fullname;
-        } else if (!data.fullname) {
+        if (isSignUp && !data.fullname) {
             showError('Fullname is required for signup');
             return;
         }
@@ -153,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
 
         try {
-            console.log('Sending data:', { ...data, password: '***' });
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
@@ -161,33 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(data),
             });
-            console.log('Response status:', response.status);
 
-            let result;
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                result = await response.json();
-            } else {
-                result = { message: await response.text() };
-            }
+            const result = await response.json();
 
             if (response.ok) {
-                console.log('Request successful:', result.message);
                 if (result.token) {
-                    try {
-                        localStorage.setItem('token', result.token);
-                    } catch (e) {
-                        console.error('Failed to save token:', e);
-                        showError('Login successful, but failed to save session. Check browser settings.');
-                    }
+                    localStorage.setItem('token', result.token);
                 }
 
-                // Show success message on page instead of alert for better UX
                 submitBtn.textContent = 'Success!';
                 submitBtn.style.backgroundColor = '#6a994e';
 
                 const successMsg = document.createElement('div');
-                successMsg.textContent = (result.message || 'Success!') + ' Redirecting...';
+                successMsg.textContent = result.message + ' Redirecting...';
                 successMsg.style.color = '#6a994e';
                 successMsg.style.marginTop = '10px';
                 form.appendChild(successMsg);
@@ -196,8 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'index.html';
                 }, 1500);
             } else {
-                console.warn('Request failed:', response.status, result.message);
-                let msg = result.message || 'An error occurred during ' + (isSignUp ? 'signup' : 'login');
+                let msg = result.message || 'An error occurred';
                 if (isSignUp && response.status === 409) {
                     msg += '<br><a href="#signin" style="color: #b4793d; text-decoration: underline; font-weight: bold;">Click here to Sign In instead!</a>';
                 }
@@ -207,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             console.error('Error:', error);
-            showError(`<strong>Network Error:</strong> ${error.message}<br>Please ensure the server is running on port 3000 and CORS allows requests from this origin.`);
+            showError(`<strong>Network Error:</strong> Cannot connect to server. Please ensure the backend is running.`);
             submitBtn.textContent = originalBtnText;
             submitBtn.disabled = false;
         }
