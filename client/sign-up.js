@@ -84,19 +84,24 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('localStorage access denied:', e);
         }
         if (token) {
-            showError('You are currently logged in. To use a different account, please log out.');
-            const logoutLink = document.createElement('a');
-            logoutLink.href = '#';
-            logoutLink.textContent = ' Log Out Now';
-            logoutLink.style.color = '#b4793d';
-            logoutLink.style.fontWeight = 'bold';
-            logoutLink.style.textDecoration = 'underline';
-            logoutLink.addEventListener('click', (e) => {
+            showError('You are currently logged in.');
+            const logoutBtn = document.createElement('button');
+            logoutBtn.textContent = 'Log Out';
+            logoutBtn.className = 'continue-btn';
+            logoutBtn.style.marginTop = '10px';
+            logoutBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 localStorage.removeItem('token');
                 location.reload();
             });
-            errorMessage.appendChild(logoutLink);
+            errorMessage.appendChild(document.createElement('br'));
+            errorMessage.appendChild(logoutBtn);
+            // Hide the form
+            form.style.display = 'none';
+            document.querySelector('.toggle-buttons').style.display = 'none';
+            document.querySelector('.or-divider').style.display = 'none';
+            document.querySelector('.social-login').style.display = 'none';
+            document.querySelector('.toggle-message').style.display = 'none';
         }
     };
 
