@@ -84,24 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('localStorage access denied:', e);
         }
         if (token) {
-            showError('You are currently logged in.');
-            const logoutBtn = document.createElement('button');
-            logoutBtn.textContent = 'Log Out';
-            logoutBtn.className = 'continue-btn';
-            logoutBtn.style.marginTop = '10px';
-            logoutBtn.addEventListener('click', (e) => {
-                e.preventDefault();
+            const loginBox = document.querySelector('.login-box');
+            loginBox.innerHTML = `
+                <h1>Account</h1>
+                <p class="toggle-message" style="color: #6a994e;">● You are currently logged in.</p>
+                <div style="margin: 20px 0; text-align: left;">
+                    <p><strong>Email:</strong> ${localStorage.getItem('userEmail') || 'User'}</p>
+                </div>
+                <button id="logout-page-btn" class="continue-btn">Sign Out</button>
+                <div class="or-divider"><span>Or</span></div>
+                <a href="index.html" style="color: #b4793d; text-decoration: none; font-weight: bold;">Back to Home</a>
+            `;
+
+            document.getElementById('logout-page-btn').addEventListener('click', () => {
                 localStorage.removeItem('token');
+                localStorage.removeItem('userEmail');
                 location.reload();
             });
-            errorMessage.appendChild(document.createElement('br'));
-            errorMessage.appendChild(logoutBtn);
-            // Hide the form
-            form.style.display = 'none';
-            document.querySelector('.toggle-buttons').style.display = 'none';
-            document.querySelector('.or-divider').style.display = 'none';
-            document.querySelector('.social-login').style.display = 'none';
-            document.querySelector('.toggle-message').style.display = 'none';
         }
     };
 
@@ -148,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 if (result.token) {
                     localStorage.setItem('token', result.token);
+                    localStorage.setItem('userEmail', data.email);
                 }
 
                 submitBtn.textContent = 'Success!';
