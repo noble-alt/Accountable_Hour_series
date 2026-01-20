@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="index.js"></script>
 </head>
 <body>
 
@@ -23,7 +22,7 @@
       <a href="about-us.html">About Us</a>
       <a href="service.html">Services</a>
       <a href="event.html">Events</a>
-      <a href="gallary.html">Gallery</a>
+      <a href="gallery.html">Gallery</a>
     </nav>
     <div class="nav-actions">
       <a href="sign-up.html#signin" class="btn-outline">Log In</a>
@@ -249,94 +248,6 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 1. HERO SECTION: Subtle Zoom
-  // The background image grows slightly as you start to scroll
-  gsap.to(".hero", {
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
-    },
-    backgroundSize: "120%", 
-    ease: "none"
-  });
-
-  // 2. OFFERS SECTION: The "Staggered Slide"
-  // Cards slide in from the right one by one
-  gsap.from(".offer-card", {
-    scrollTrigger: {
-      trigger: ".offers",
-      start: "top 80%",
-      end: "top 20%",
-      scrub: 1
-    },
-    x: 200,
-    opacity: 0,
-    stagger: 0.3,
-    ease: "power2.out"
-  });
-
-  // 3. MENTORS SECTION: The "Classic Scale"
-  // Mentors grow into place with a "bounce" (back ease)
-  gsap.from(".mentor", {
-    scrollTrigger: {
-      trigger: ".mentors",
-      start: "top 75%",
-    },
-    scale: 0,
-    opacity: 0,
-    stagger: 0.2,
-    duration: 1.2,
-    ease: "back.out(1.7)"
-  });
-
-  // 4. OUR STORY: Text Split/Slide
-  // The text slides in from the left, the stats from the right
-  gsap.from(".story p", {
-    scrollTrigger: { trigger: ".story", start: "top 80%" },
-    x: -100,
-    opacity: 0,
-    duration: 1
-  });
-  gsap.from(".stats div", {
-    scrollTrigger: { trigger: ".stats", start: "top 85%" },
-    y: 50,
-    opacity: 0,
-    stagger: 0.2,
-    duration: 1
-  });
-
-  // 5. EVENTS: Horizontal "Ghost" Reveal
-  // Images fade in and slide up while the text stays still
-  gsap.utils.toArray(".event").forEach((event) => {
-    gsap.from(event.querySelector(".event-img"), {
-      scrollTrigger: {
-        trigger: event,
-        start: "top 90%",
-      },
-      width: "0%",
-      opacity: 0,
-      duration: 1.5,
-      ease: "power3.inOut"
-    });
-  });
-
-  // 6. JOIN SECTION: The "Spotlight"
-  // The card grows and the background darkens
-  gsap.from(".join-card", {
-    scrollTrigger: {
-      trigger: ".join-section",
-      start: "top 90%",
-      scrub: 1
-    },
-    scale: 0.9,
-    backgroundColor: "#ffffff",
-    duration: 1
-  });
-</script>
+<script src="scroll-effects.js"></script>
 </body>
 </html>
