@@ -110,8 +110,8 @@ body {
 
 /* Stats */
 .stats-container { text-align: center; padding-bottom: 100px; }
-.stats-grid { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; padding: 0 5%; }
-.stat-card { background: white; width: 250px; padding: 40px 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.stats-grid { background-color: #fff; display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; padding: 0 5%; }
+.stat-card { color: #fff; background: #091c20; width: 250px; padding: 40px 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
 .stat-card h3 { font-size: 2.5rem; margin-bottom: 5px; }
 
 /* Content Rows */

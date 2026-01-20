@@ -48,7 +48,6 @@ footer {
   justify-content: space-between;
   padding: 22px 60px;
   background-color: #091c20;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
   position: fixed;
   top:0;
   width: 100%;
@@ -373,7 +372,6 @@ footer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 }
 
 .event-description {
@@ -385,7 +383,7 @@ footer {
 
 /* Buttons */
 .btn-view {
-    background-color: var(--gold);
+    background-color: goldenrod;
     color: white;
     border: none;
     padding: 10px 25px;
@@ -397,7 +395,7 @@ footer {
 }
 
 .btn-more {
-    background-color: var(--gold);
+    background-color: goldenrod;
     color: white;
     border: none;
     padding: 12px 35px;
