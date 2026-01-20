@@ -20,7 +20,7 @@ body {
     justify-content: space-between;
     padding: 22px 60px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    position: fixed;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: #091c20;
     top: 0;
     left: 0;
     width: 100%;
@@ -75,7 +75,7 @@ body {
     font-weight: 600;
 }
 
-.login-container {
+.login-container { margin-top: 80px;
     text-align: center;
 }
 

@@ -48,7 +48,12 @@ footer {
   justify-content: space-between;
   padding: 22px 60px;
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
-  position: static;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #091c20;
 }
 
 .logo {
@@ -102,6 +107,7 @@ footer {
   text-align: center;
   color: #eef1dc;
   margin-bottom: 50px;
+  margin-top: 80px;
 }
 
 @media (min-aspect-ratio: 16/9) {

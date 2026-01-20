@@ -23,6 +23,12 @@ body {
 /* Header & Nav */
 header {
     padding: 20px 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--bg-dark);
 }
 
 nav {
@@ -72,6 +78,7 @@ nav {
 .hero {
     text-align: center;
     padding: 60px 20px;
+    margin-top: 80px;
 }
 
 .hero h1 {

@@ -37,20 +37,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.navbar a, .nav-links a, .nav-actions a');
 
     navLinks.forEach(link => {
-        const text = link.textContent.trim().toLowerCase();
+        const button = link.querySelector('button');
+        const target = button || link;
+        const text = target.textContent.trim().toLowerCase();
+
         // Specifically target "Log In" or "Log Out" links
         if (text === 'log in' || text === 'log out') {
             if (token) {
-                link.textContent = 'Log Out';
+                target.textContent = 'Log Out';
                 link.href = '#';
-                link.addEventListener('click', (e) => {
+                link.onclick = (e) => {
                     e.preventDefault();
                     localStorage.removeItem('token');
+                    localStorage.removeItem('userEmail');
                     window.location.href = 'index.html';
-                });
+                };
             } else {
-                link.textContent = 'Log In';
+                target.textContent = 'Log In';
                 link.href = 'sign-up.html#signin';
+                link.onclick = null;
             }
         }
     });

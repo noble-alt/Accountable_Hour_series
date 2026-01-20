@@ -21,7 +21,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 22px 60px;
-  position: fixed;
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: #091c20;
   top: 0;
   width: 100%;
   z-index: 1000;

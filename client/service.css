@@ -25,7 +25,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 80px;
-    background: transparent;
+    background: #091c20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav-links a {
@@ -47,7 +52,7 @@ nav {
 .mentor-btn { background: transparent; color: white; }
 
 /* Hero */
-.hero {
+.hero { margin-top: 80px;
     text-align: center;
     padding: 80px 20%;
 }

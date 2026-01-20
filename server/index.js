@@ -7,7 +7,13 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+    console.warn('WARNING: JWT_SECRET is not defined in environment variables. Using a fallback for development only.');
+}
+
+const SECRET = JWT_SECRET || 'development_fallback_secret';
 
 app.use(cors());
 app.use(express.json());
@@ -55,7 +61,7 @@ app.post('/signup', (req, res) => {
             return res.status(500).json({ message: 'Error registering user' });
         }
 
-        const token = jwt.sign({ id: this.lastID, email }, JWT_SECRET, { expiresIn: '24h' });
+        const token = jwt.sign({ id: this.lastID, email }, SECRET, { expiresIn: '24h' });
         res.status(201).json({ message: 'User registered successfully', token });
     });
 });
@@ -77,7 +83,7 @@ app.post('/login', (req, res) => {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
+        const token = jwt.sign({ id: user.id, email: user.email }, SECRET, { expiresIn: '24h' });
         res.status(200).json({ message: 'Login successful', token });
     });
 });

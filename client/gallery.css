@@ -26,7 +26,15 @@ h1, h2, h3 {
 }
 
 /* Navbar */
-header { padding: 25px 5%; }
+header {
+    padding: 25px 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--bg-dark);
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -50,6 +58,7 @@ header { padding: 25px 5%; }
     gap: 50px;
     padding: 60px 5%;
     align-items: start;
+    margin-top: 80px;
 }
 .hero-content h1 { font-size: 4.2rem; line-height: 1.1; margin-bottom: 25px; }
 .hero-content p { color: var(--text-muted); max-width: 440px; font-size: 0.95rem; line-height: 1.7; }

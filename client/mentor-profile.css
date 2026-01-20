@@ -17,9 +17,10 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-light);
   padding: 22px 60px;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #091c20; /* Add a background color to prevent content from showing through */
+  background-color: #091c20;
 }
 
 .logo {
@@ -51,7 +52,7 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-light);
 }
 
 /* Dark Header Section */
-.profile-top-dark { background: var(--primary-dark); color: white; padding: 40px 0 100px; }
+.profile-top-dark { background: var(--primary-dark); color: white; padding: 140px 0 100px; }
 .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; }
 .profile-main-info { display: flex; gap: 30px; align-items: flex-start; }
 .main-avatar { width: 180px; height: 180px; border-radius: 8px; object-fit: cover; }

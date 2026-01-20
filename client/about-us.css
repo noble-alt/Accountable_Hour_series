@@ -22,9 +22,11 @@ body {
   justify-content: space-between;
   padding: 22px 60px;
   position: fixed;
-  gap: 60px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #091c20;
-  width: 90%;
 }
 
 .logo {
@@ -72,7 +74,7 @@ body {
   text-decoration: none;
 }
 /* Hero Section - 100% laptop width */
-.hero {
+.hero { margin-top: 80px;
     display: flex;
     padding: 60px 5% 100px;
     align-items: center;
