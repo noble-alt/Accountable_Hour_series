@@ -20,6 +20,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client')));
 
+// Hardcoded Admin Credentials
+const ADMIN_USERNAME = 'admin';
+const ADMIN_PASSWORD = 'password123';
+
 // Database setup
 const dbPath = path.join(__dirname, 'database.db');
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -100,6 +104,51 @@ app.post('/login', async (req, res) => {
         const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
         res.status(200).json({ message: 'Login successful', token, user: { fullname: user.fullname } });
     });
+});
+
+// Admin Login
+app.post('/admin/login', (req, res) => {
+    const { username, password } = req.body;
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        const token = jwt.sign({ username, role: 'admin' }, JWT_SECRET, { expiresIn: '24h' });
+        return res.status(200).json({ token });
+    }
+    res.status(401).json({ message: 'Invalid admin credentials' });
+});
+
+// Admin Middleware
+const authenticateAdmin = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err || user.role !== 'admin') return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+};
+
+// Admin Endpoints
+app.get('/users', authenticateAdmin, (req, res) => {
+    db.all(`SELECT fullname, email FROM users`, [], (err, rows) => {
+        if (err) return res.status(500).json({ message: 'Database error' });
+        res.json(rows);
+    });
+});
+
+app.delete('/users/:email', authenticateAdmin, (req, res) => {
+    const { email } = req.params;
+    db.run(`DELETE FROM users WHERE email = ?`, [email], function(err) {
+        if (err) return res.status(500).json({ message: 'Database error' });
+        res.json({ message: 'User deleted' });
+    });
+});
+
+app.get('/posts', authenticateAdmin, (req, res) => {
+    // Return empty array as posts are not implemented yet
+    res.json([]);
 });
 
 app.listen(PORT, () => {
