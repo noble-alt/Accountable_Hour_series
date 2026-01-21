@@ -62,12 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.addEventListener('click', (e) => {
                     // If the user wants to logout, they can click their name
                     if (confirm('Do you want to log out?')) {
+                        e.preventDefault(); // Only prevent navigation if logging out
                         localStorage.removeItem('token');
                         localStorage.removeItem('user');
                         window.location.href = 'index.html';
-                    } else {
-                        e.preventDefault();
                     }
+                    // Otherwise, proceed to mentor profile (the default behavior)
                 });
             }
         }
