@@ -262,6 +262,13 @@ nav {
     border-radius: 4px;
 }
 
+.event-highlight {
+    background-color: goldenrod;
+    color: black;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 /* Footer Strip */
 .footer {
   background-color: #eef1dc;
