@@ -33,37 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Login/Logout Toggle Logic
     const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+    const user = userStr ? JSON.parse(userStr) : null;
+
     // Select all links in the navbar
     const navLinks = document.querySelectorAll('.navbar a, .nav-links a, .nav-actions a');
 
     navLinks.forEach(link => {
         const text = link.textContent.trim().toLowerCase();
-        // Specifically target "Log In" or "Log Out" links
-        if (text === 'log in' || text === 'log out') {
+
+        // Target "Log In"
+        if (text === 'log in') {
             if (token) {
-                link.textContent = 'Log Out';
-                link.href = '#';
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem('token');
-                    window.location.href = 'index.html';
-                });
+                link.style.display = 'none'; // Hide Log In if logged in
             } else {
-                link.textContent = 'Log In';
+                link.style.display = 'inline-block';
                 link.href = 'sign-up.html#signin';
             }
         }
-    });
 
-    if (token) {
-        // Update Hero/Action buttons to redirect to Discussion Board if they point to signup
-        const actionButtons = document.querySelectorAll('.hero a, .hero-text a, .join-section a, .join-card a, .btn-solid');
-        actionButtons.forEach(btn => {
-            const link = btn.tagName === 'A' ? btn : btn.querySelector('a');
-            if (link && (link.getAttribute('href') === 'sign-up.html' || link.getAttribute('href') === 'sign-up.html#signup')) {
-                link.textContent = 'Join Discussion';
-                link.href = 'discussion-board.html';
+        // Target "Meet Mentors" (or similar button in nav-actions)
+        if (text === 'meet mentors') {
+            if (token && user && user.fullname) {
+                const firstName = user.fullname.split(' ')[0];
+                link.textContent = `Hi ${firstName}`;
+                // Optionally add logout functionality if clicked?
+                // For now, just change text as requested.
+                link.addEventListener('click', (e) => {
+                    // If the user wants to logout, they can click their name
+                    if (confirm('Do you want to log out?')) {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        window.location.href = 'index.html';
+                    } else {
+                        e.preventDefault();
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 });

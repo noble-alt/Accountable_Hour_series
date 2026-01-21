@@ -68,7 +68,7 @@ app.post('/signup', async (req, res) => {
             }
 
             const token = jwt.sign({ id: this.lastID, email }, JWT_SECRET, { expiresIn: '24h' });
-            res.status(201).json({ message: 'User created successfully', token });
+            res.status(201).json({ message: 'User created successfully', token, user: { fullname } });
         });
     } catch (err) {
         res.status(500).json({ message: 'Server error during signup' });
@@ -98,7 +98,7 @@ app.post('/login', async (req, res) => {
         }
 
         const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful', token, user: { fullname: user.fullname } });
     });
 });
 

@@ -176,8 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (result.token) {
                     try {
                         localStorage.setItem('token', result.token);
+                        if (result.user) {
+                            localStorage.setItem('user', JSON.stringify(result.user));
+                        }
                     } catch (e) {
-                        console.error('Failed to save token:', e);
+                        console.error('Failed to save session data:', e);
                         showError('Login successful, but failed to save session. Check browser settings.');
                     }
                 }
