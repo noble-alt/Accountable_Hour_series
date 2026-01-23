@@ -20,9 +20,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client')));
 
-// Hardcoded Admin Credentials
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'password123';
+// Admin Credentials
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'password123';
+
+if (!process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD) {
+    console.warn('Warning: Admin credentials not found in environment variables. Using development fallbacks.');
+}
 
 // Database setup
 const dbPath = path.join(__dirname, 'database.db');
