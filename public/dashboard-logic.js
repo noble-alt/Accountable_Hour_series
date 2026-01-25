@@ -6,19 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalPosts = document.getElementById("total-posts");
     const usersTableBody = document.getElementById("users-table-body");
 
-    const getApiBase = () => {
-        if (window.location.protocol === 'file:') {
-            return 'http://localhost:3000';
-        }
-        const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        if (!window.location.port || window.location.port !== '3000') {
-            return `${protocol}//${hostname}:3000`;
-        }
-        return '';
-    };
-
-    const API_BASE = getApiBase();
+    const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:3000/api' : '/api';
 
     let token = null;
 

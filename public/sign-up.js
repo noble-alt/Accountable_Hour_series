@@ -52,19 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI(mode);
     });
 
-    const getApiBase = () => {
-        if (window.location.protocol === 'file:') {
-            return 'http://localhost:3000';
-        }
-        const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        if (!window.location.port || window.location.port !== '3000') {
-            return `${protocol}//${hostname}:3000`;
-        }
-        return '';
-    };
-
-    const API_BASE = getApiBase();
+    const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:3000/api' : '/api';
 
     // Check for file:// protocol
     if (window.location.protocol === 'file:') {
