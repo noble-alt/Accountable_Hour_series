@@ -52,19 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI(mode);
     });
 
-    const getApiBase = () => {
-        if (window.location.protocol === 'file:') {
-            return 'http://localhost:3000';
-        }
-        const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        if (!window.location.port || window.location.port !== '3000') {
-            return `${protocol}//${hostname}:3000`;
-        }
-        return '';
-    };
-
-    const API_BASE = getApiBase();
+    const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:3000/api' : '/api';
 
     // Check for file:// protocol
     if (window.location.protocol === 'file:') {
@@ -216,10 +204,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Google Sign-In Implementation
+    const handleGoogleResponse = async (response) => {
+        hideError();
+        try {
+            const res = await fetch(API_BASE + '/google-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ idToken: response.credential }),
+            });
+
+            const result = await res.json();
+            if (res.ok) {
+                if (result.token) {
+                    localStorage.setItem('token', result.token);
+                    if (result.user) {
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                    }
+                }
+                window.location.href = 'index.html';
+            } else {
+                showError(result.message || 'Google login failed');
+            }
+        } catch (err) {
+            console.error('Google login error:', err);
+            showError('Network error during Google login. Ensure GOOGLE_CLIENT_ID is correctly configured.');
+        }
+    };
+
+    const initGoogleSignIn = () => {
+        if (typeof google !== 'undefined') {
+            google.accounts.id.initialize({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com', // Placeholder: User should replace this
+                callback: handleGoogleResponse
+            });
+        } else {
+            setTimeout(initGoogleSignIn, 100);
+        }
+    };
+
+    initGoogleSignIn();
+
     const socialIcons = document.querySelectorAll('.social-login i');
     socialIcons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            showError('Social login is not yet implemented. Please use the form.');
+        icon.addEventListener('click', (e) => {
+            if (icon.classList.contains('fa-google')) {
+                if (typeof google !== 'undefined') {
+                    google.accounts.id.prompt();
+                } else {
+                    showError('Google login is still loading. Please try again in a moment.');
+                }
+            } else {
+                showError('Social login is not yet implemented for this provider. Please use the form.');
+            }
         });
     });
 });
