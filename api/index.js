@@ -1,4 +1,5 @@
 const express = require('express');
+const { OAuth2Client } = require('google-auth-library');
 const { Pool } = require('pg');
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
@@ -12,6 +13,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your_development_secret_key';
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 if (!process.env.JWT_SECRET) {
     console.warn('Warning: JWT_SECRET not found in environment variables. Using development fallback.');
@@ -185,6 +189,46 @@ apiRouter.post('/login', async (req, res) => {
         res.status(200).json({ message: 'Login successful', token, user: { fullname: user.fullname } });
     } catch (err) {
         res.status(500).json({ message: 'Database error' });
+    }
+});
+
+// Google Login endpoint
+apiRouter.post('/google-login', async (req, res) => {
+    const { idToken } = req.body;
+
+    if (!idToken) {
+        return res.status(400).json({ message: 'ID Token is required' });
+    }
+
+    if (!GOOGLE_CLIENT_ID) {
+        console.warn('GOOGLE_CLIENT_ID not set in environment variables');
+        return res.status(500).json({ message: 'Google Login not configured' });
+    }
+
+    try {
+        const ticket = await client.verifyIdToken({
+            idToken: idToken,
+            audience: GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        const { email, name } = payload;
+
+        let user = await dbQuery.get(`SELECT * FROM users WHERE email = ?`, [email]);
+
+        if (!user) {
+            const querySql = isPostgres
+                ? `INSERT INTO users (fullname, email, password) VALUES (?, ?, ?) RETURNING id`
+                : `INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)`;
+
+            const result = await dbQuery.run(querySql, [name, email, null]);
+            user = { id: result.lastID, fullname: name, email: email };
+        }
+
+        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
+        res.status(200).json({ message: 'Login successful', token, user: { fullname: user.fullname } });
+    } catch (err) {
+        console.error('Google login error:', err);
+        res.status(401).json({ message: 'Invalid Google token' });
     }
 });
 
